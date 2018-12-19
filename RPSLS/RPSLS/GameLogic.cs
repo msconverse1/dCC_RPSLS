@@ -19,7 +19,6 @@ namespace RPSLS
         }
         public void CheckAgainstList(string p1,string p2)
         {
-            
             switch (p1)
             {
                 case "Rock":
@@ -39,12 +38,68 @@ namespace RPSLS
                     }
                     break;
                 case "Paper":
+                    if (p2 == "Rock" || p2 == "Spock")
+                    {
+                        Console.WriteLine(player1.name + "Beats" + player2.name);
+                        player1.score++;
+                    }
+                    else if (p2 == "Scissors" || p2 == "Lizard")
+                    {
+                        Console.WriteLine(player2.name + " Beats " + player1.name);
+                        player2.score++;
+                    }
+                    else
+                    {
+                        Console.WriteLine(player1.name + "Ties" + player2.name);
+                    }
                     break;
                 case "Scissors":
+                    if (p2 == "Paper" || p2 == "Lizard")
+                    {
+                        Console.WriteLine(player1.name + "Beats" + player2.name);
+                        player1.score++;
+                    }
+                    else if (p2 == "Rock" || p2 == "Spock")
+                    {
+                        Console.WriteLine(player2.name + " Beats " + player1.name);
+                        player2.score++;
+                    }
+                    else
+                    {
+                        Console.WriteLine(player1.name + "Ties" + player2.name);
+                    }
                     break;
                 case "Lizard":
+                    if (p2 == "Spock" || p2 == "Paper")
+                    {
+                        Console.WriteLine(player1.name + "Beats" + player2.name);
+                        player1.score++;
+                    }
+                    else if (p2 == "Scissors" || p2 == "Rock")
+                    {
+                        Console.WriteLine(player2.name + " Beats " + player1.name);
+                        player2.score++;
+                    }
+                    else
+                    {
+                        Console.WriteLine(player1.name + "Ties" + player2.name);
+                    }
                     break;
                 case "Spock":
+                    if (p2 == "Scissors" || p2 == "Rock")
+                    {
+                        Console.WriteLine(player1.name + "Beats" + player2.name);
+                        player1.score++;
+                    }
+                    else if (p2 == "Lizard" || p2 == "Paper")
+                    {
+                        Console.WriteLine(player2.name + " Beats " + player1.name);
+                        player2.score++;
+                    }
+                    else
+                    {
+                        Console.WriteLine(player1.name + "Ties" + player2.name);
+                    }
                     break;
                     
                     
