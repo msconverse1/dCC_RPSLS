@@ -10,6 +10,8 @@ namespace RPSLS
     {
         static void Main(string[] args)
         {
+            GameLogic LetsPay = new GameLogic();
+            
         }
     }
 }
