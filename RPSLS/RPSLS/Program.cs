@@ -11,7 +11,9 @@ namespace RPSLS
         static void Main(string[] args)
         {
             GameLogic LetsPay = new GameLogic();
-            
+            LetsPay.player1.Guestures(LetsPay.Hand);
+            string input = LetsPay.player1.AskForInput();
+            LetsPay.player1.IsVaildChoice(input);
         }
     }
 }

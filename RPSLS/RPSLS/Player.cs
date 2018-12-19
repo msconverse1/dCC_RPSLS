@@ -10,34 +10,41 @@ namespace RPSLS
     {
         string name;
         int score;
-        GameLogic happening;
+        string input;
+        public List<string> guesture;
+        
         public Player(string name, int score)
         {
             this.name = name;
             this.score = score;
-
+            
         }
         public string AskForInput()
         {
             string input;
+            Console.WriteLine("Choose a gesture");
             input = Console.ReadLine();
-            return input;
+            
+            return char.ToUpper(input[0]) + input.Substring(1); ;
         }
         public string AiInput()
         {
-           int num = new Random().Next(0, happening.Hand.Count());
-           string input = happening.Hand.ElementAt(num);
+           int num = new Random().Next(0, guesture.Count());
+           string input = guesture.ElementAt(num);
            return input;
         }
         public void IsVaildChoice(string input)
         {
-            for (int i = 0; i < happening.Hand.Count(); i++)
-            {
-                if(!happening.Hand.Contains(input))
+                while(!guesture.Contains(input))
                 {
                     Console.WriteLine("Not a Vaild Input.");
+                    Console.Clear();
+                    input = AskForInput();
                 }
-            }
+        }
+        public void Guestures(List<string> hand)
+        {
+            this.guesture = hand;
         }
     }
 }
