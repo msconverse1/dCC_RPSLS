@@ -10,7 +10,7 @@ namespace RPSLS
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("What game mode would you like to play?");
+            Console.WriteLine("What game mode would you like to play?(singleplayer or multiplayer)");
             string gameType = Console.ReadLine();
             if (gameType == "singleplayer")
             {
@@ -31,8 +31,6 @@ namespace RPSLS
                     string aiInput = LetsPay.player2.AiInput();
                     Console.Clear();
                     LetsPay.CheckAgainstList(input, aiInput);
-                    
-                    
                 }
             }
             else
@@ -56,8 +54,6 @@ namespace RPSLS
                     LetsPay.player2.IsVaildChoice(aiInput);
                     Console.Clear();
                     LetsPay.CheckAgainstList(input, aiInput);
-                    
-
                 }
             }
         }
