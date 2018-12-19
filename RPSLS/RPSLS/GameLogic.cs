@@ -10,21 +10,22 @@ namespace RPSLS
     {
         public List<string> Hand;
         public Player player1;
-        public Player player2;
+        public AI player2;
         public GameLogic()
         {
             Hand = new List<string>() { "Rock", "Paper", "Scissors","Lizard","Spock" };
             player1 = new Player("Darkham", 0);
-            player2 = new Player("Frank", 0);
+            player2 = new AI();
         }
         public void CheckAgainstList(string p1,string p2)
         {
             switch (p1)
             {
+                
                 case "Rock":
                     if(p2 == "Scissors"|| p2 == "Lizard")
                     {
-                        Console.WriteLine(player1.name + "Beats" + player2.name);
+                        Console.WriteLine(player1.name + " Beats " + player2.name);
                         player1.score++;
                     }
                     else if(p2 == "Paper"|| p2 == "Spock")
@@ -34,13 +35,13 @@ namespace RPSLS
                     }
                     else
                     {
-                        Console.WriteLine(player1.name + "Ties" + player2.name);
+                        Console.WriteLine(player1.name + " Ties " + player2.name);
                     }
                     break;
                 case "Paper":
                     if (p2 == "Rock" || p2 == "Spock")
                     {
-                        Console.WriteLine(player1.name + "Beats" + player2.name);
+                        Console.WriteLine(player1.name + " Beats " + player2.name);
                         player1.score++;
                     }
                     else if (p2 == "Scissors" || p2 == "Lizard")
@@ -50,13 +51,13 @@ namespace RPSLS
                     }
                     else
                     {
-                        Console.WriteLine(player1.name + "Ties" + player2.name);
+                        Console.WriteLine(player1.name + " Ties " + player2.name);
                     }
                     break;
                 case "Scissors":
                     if (p2 == "Paper" || p2 == "Lizard")
                     {
-                        Console.WriteLine(player1.name + "Beats" + player2.name);
+                        Console.WriteLine(player1.name + " Beats " + player2.name);
                         player1.score++;
                     }
                     else if (p2 == "Rock" || p2 == "Spock")
@@ -72,7 +73,7 @@ namespace RPSLS
                 case "Lizard":
                     if (p2 == "Spock" || p2 == "Paper")
                     {
-                        Console.WriteLine(player1.name + "Beats" + player2.name);
+                        Console.WriteLine(player1.name + " Beats " + player2.name);
                         player1.score++;
                     }
                     else if (p2 == "Scissors" || p2 == "Rock")
@@ -82,13 +83,13 @@ namespace RPSLS
                     }
                     else
                     {
-                        Console.WriteLine(player1.name + "Ties" + player2.name);
+                        Console.WriteLine(player1.name + " Ties " + player2.name);
                     }
                     break;
                 case "Spock":
                     if (p2 == "Scissors" || p2 == "Rock")
                     {
-                        Console.WriteLine(player1.name + "Beats" + player2.name);
+                        Console.WriteLine(player1.name + " Beats " + player2.name);
                         player1.score++;
                     }
                     else if (p2 == "Lizard" || p2 == "Paper")
@@ -98,14 +99,10 @@ namespace RPSLS
                     }
                     else
                     {
-                        Console.WriteLine(player1.name + "Ties" + player2.name);
+                        Console.WriteLine(player1.name + " Ties " + player2.name);
                     }
                     break;
-                    
-                    
             }
         }
-
-        
     }
 }

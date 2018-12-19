@@ -10,9 +10,11 @@ namespace RPSLS
     {
         public string name;
         public int score;
-        string input;
         public List<string> guesture;
-        
+        public Player()
+        {
+
+        }
         public Player(string name, int score)
         {
             this.name = name;
@@ -27,12 +29,7 @@ namespace RPSLS
             
             return char.ToUpper(input[0]) + input.Substring(1); ;
         }
-        public string AiInput()
-        {
-           int num = new Random().Next(0, guesture.Count());
-           string input = guesture.ElementAt(num);
-           return input;
-        }
+        
         public void IsVaildChoice(string input)
         {
                 while(!guesture.Contains(input))
@@ -46,5 +43,6 @@ namespace RPSLS
         {
             this.guesture = hand;
         }
+        
     }
 }
