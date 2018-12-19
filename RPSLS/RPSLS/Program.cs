@@ -12,8 +12,12 @@ namespace RPSLS
         {
             GameLogic LetsPay = new GameLogic();
             LetsPay.player1.Guestures(LetsPay.Hand);
+            LetsPay.player2.Guestures(LetsPay.Hand);
             string input = LetsPay.player1.AskForInput();
             LetsPay.player1.IsVaildChoice(input);
+            string aiInput = LetsPay.player2.AiInput();
+            LetsPay.CheckAgainstList(input, aiInput);
+            Console.Read();
         }
     }
 }

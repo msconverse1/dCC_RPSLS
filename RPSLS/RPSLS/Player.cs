@@ -8,8 +8,8 @@ namespace RPSLS
 {
    public class Player
     {
-        string name;
-        int score;
+        public string name;
+        public int score;
         string input;
         public List<string> guesture;
         
