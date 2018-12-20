@@ -18,7 +18,7 @@ namespace RPSLS
         {
             Hand = new List<string>() { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
             string input = AskForGameType("");
-             rounds = AskForRounds();
+                     rounds = AskForRounds();
             if (input == "multiplayer")
             {
                 player1 = new Player("Darkham", 0);
@@ -120,7 +120,7 @@ namespace RPSLS
             }
             return output;
         }
-        static int AskForRounds()
+        private int AskForRounds()
         {
             int rounds;
             do
