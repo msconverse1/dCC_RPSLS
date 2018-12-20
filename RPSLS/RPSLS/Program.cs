@@ -12,50 +12,25 @@ namespace RPSLS
         {
             Console.WriteLine("What game mode would you like to play?(singleplayer or multiplayer)");
             string gameType = Console.ReadLine();
-            if (gameType == "singleplayer")
-            {
-                GameLogic LetsPay = new GameLogic();
-                while (LetsPay.player1.score < 3 && LetsPay.player2.score < 3)
+                Console.WriteLine("How many rounds would you like to play to?");
+               
+                 int.TryParse(Console.ReadLine(), out int rounds);
+                GameLogic LetsPay = new GameLogic(gameType);
+                while (LetsPay.player1.score < rounds && LetsPay.player2.score < rounds)
                 {
-                    LetsPay.player1.Guestures(LetsPay.Hand);
-                    LetsPay.player2.Guestures(LetsPay.Hand);
-                    Console.WriteLine(LetsPay.player1.name + " score: " + LetsPay.player1.score);
-                    Console.WriteLine(LetsPay.player2.name + " score: " + LetsPay.player2.score);
-                    Console.WriteLine("\n");
-                    Console.WriteLine(LetsPay.player1.name + " Turn.");
-                    Console.WriteLine("\n");
+                    LetsPay.GameScore(LetsPay.player1, LetsPay.player2);
+                    Console.WriteLine("\n" + LetsPay.player1.name + " Turn.\n");
                     string input = LetsPay.player1.AskForInput();
                     LetsPay.player1.IsVaildChoice(input);
-                    Console.WriteLine("\n");
-                    Console.WriteLine(LetsPay.player2.name + " Turn.");
-                    string aiInput = LetsPay.player2.AiInput();
-                    Console.Clear();
-                    LetsPay.CheckAgainstList(input, aiInput);
-                }
-            }
-            else
-            {
-                GameLogic LetsPay = new GameLogic();
-                while (LetsPay.player1.score < 3 && LetsPay.player2.score < 3)
-                {
-                    LetsPay.player1.Guestures(LetsPay.Hand);
-                    LetsPay.player2.Guestures(LetsPay.Hand);
-                    Console.WriteLine(LetsPay.player1.name + " score: " + LetsPay.player1.score);
-                    Console.WriteLine(LetsPay.player2.name + " score: " + LetsPay.player2.score);
-                    Console.WriteLine("\n");
-                    Console.WriteLine(LetsPay.player1.name + " Turn.");
-                    Console.WriteLine("\n");
-                    string input = LetsPay.player1.AskForInput();
-                    LetsPay.player1.IsVaildChoice(input);
-                    Console.WriteLine("\n");
-                    Console.WriteLine(LetsPay.player2.name + " Turn.");
-                    Console.WriteLine("\n");
+                    Console.WriteLine("\n" + LetsPay.player2.name + " Turn.\n");
                     string aiInput = LetsPay.player2.AskForInput();
                     LetsPay.player2.IsVaildChoice(aiInput);
                     Console.Clear();
                     LetsPay.CheckAgainstList(input, aiInput);
-                }
-            }
+                }           
+                LetsPay.GameScore(LetsPay.player1, LetsPay.player2);
+                LetsPay.GameOver(LetsPay.player1, LetsPay.player2, rounds);
+                Console.Read();
         }
     }
 }

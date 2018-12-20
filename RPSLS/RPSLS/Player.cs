@@ -13,7 +13,6 @@ namespace RPSLS
         public List<string> guesture;
         public Player()
         {
-
         }
         public Player(string name, int score)
         {
@@ -24,7 +23,7 @@ namespace RPSLS
         {
             this.guesture = hand;
         }
-        public string AskForInput()
+        public virtual string AskForInput()
         {
             string input;
             Console.WriteLine("Choose a gesture");
@@ -40,7 +39,7 @@ namespace RPSLS
            while(!guesture.Contains(input))
             {
                 Console.WriteLine("Not a Vaild Input.");
-                Console.Clear();
+                
                 input = AskForInput();
             }
         }

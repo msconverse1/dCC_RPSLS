@@ -13,7 +13,7 @@ namespace RPSLS
             name = "Peter ";
             score = 0;
         }
-        public string AiInput()
+      public  override string AskForInput()
         {
             int num = new Random().Next(0, guesture.Count());
             string input = guesture.ElementAt(num);
