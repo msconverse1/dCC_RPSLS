@@ -27,18 +27,19 @@ namespace RPSLS
             if (input == "")
             {
                 Console.WriteLine("Not a Vaild Input.");
-                AskForInput();
+               input = AskForInput();
             }
             return char.ToUpper(input[0]) + input.Substring(1);
         }
-        public void IsVaildChoice(string input)
+        public string IsVaildChoice(string input)
         {
             while (!guesture.Contains(input))
             {
                 Console.WriteLine("Not a Vaild Input.");
 
-                input = AskForInput();
+              input = AskForInput();
             }
+            return input;
         }
     }
 }

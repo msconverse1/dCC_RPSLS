@@ -14,14 +14,14 @@ namespace RPSLS
         public User player1;
         public User player2;
 
-        
+
         public GameLogic(string gameMode)
         {
-            Hand = new List<string>() { "Rock", "Paper", "Scissors","Lizard","Spock" };
+            Hand = new List<string>() { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
             player1 = new Player("Darkham", 0);
-            if(gameMode == "multiplayer")
+            if (gameMode == "multiplayer")
             {
-                player2 = new Player("Logan",0);
+                player2 = new Player("Logan", 0);
             }
             else
             {
@@ -30,7 +30,7 @@ namespace RPSLS
             player1.Guestures(Hand);
             player2.Guestures(Hand);
         }
-        public void CheckAgainstList(string p1,string p2)
+        public void CheckAgainstList(string p1, string p2)
         {
             switch (p1)
             {
@@ -52,11 +52,11 @@ namespace RPSLS
                     break;
                 case "Spock":
                     //other player choose,what guesture wins against Spock,what guesture wins against Spock,what loses against Spock,what loses against Spock
-                    ShortCheck(p2, Hand[2], Hand[0],Hand[3],Hand[1]);
+                    ShortCheck(p2, Hand[2], Hand[0], Hand[3], Hand[1]);
                     break;
             }
         }
-        public void ShortCheck(string p2, string Win,string win, string Lose, string lose)
+        public void ShortCheck(string p2, string Win, string win, string Lose, string lose)
         {
             if (p2 == Win || p2 == win)
             {
@@ -73,25 +73,31 @@ namespace RPSLS
                 Console.WriteLine($"{player1.name} Ties: { player2.name}");
             }
         }
-        public void GameScore(User user,User test)
+        public void GameScore(User user, User test)
         {
             Console.WriteLine($"{player1.name} score: { player1.score}");
             Console.WriteLine($"{player2.name} score: { player2.score}");
         }
-        public void GameOver(User user,User test, int rounds)
+        public void GameOver(User user, User test, int rounds)
         {
-            if(user.score == rounds && test.score == rounds)
+            if (user.score == rounds && test.score == rounds)
             {
                 Console.WriteLine("There is no Winner!");
             }
-           else if (user.score == rounds)
+            else if (user.score == rounds)
             {
                 Console.WriteLine($"IS the Winner!!!: {user.name}");
             }
-            else if(test.score == rounds)
+            else if (test.score == rounds)
             {
                 Console.WriteLine($"IS the Winner!!!: {test.name}");
             }
+        }
+        public string PlayAgain()
+        {
+            Console.WriteLine("Would you like to play agian?");
+            string result = Console.ReadLine();
+            return result;
         }
     }
 }

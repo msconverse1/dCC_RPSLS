@@ -8,7 +8,7 @@ namespace RPSLS
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("What game mode would you like to play?(singleplayer or multiplayer)");
             string gameType = Console.ReadLine();
@@ -21,16 +21,32 @@ namespace RPSLS
                     LetsPay.GameScore(LetsPay.player1, LetsPay.player2);
                     Console.WriteLine("\n" + LetsPay.player1.name + " Turn.\n");
                     string input = LetsPay.player1.AskForInput();
-                    LetsPay.player1.IsVaildChoice(input);
+                   input = LetsPay.player1.IsVaildChoice(input);
                     Console.WriteLine("\n" + LetsPay.player2.name + " Turn.\n");
                     string aiInput = LetsPay.player2.AskForInput();
-                    LetsPay.player2.IsVaildChoice(aiInput);
+                    aiInput = LetsPay.player2.IsVaildChoice(aiInput);
                     Console.Clear();
                     LetsPay.CheckAgainstList(input, aiInput);
                 }           
                 LetsPay.GameScore(LetsPay.player1, LetsPay.player2);
                 LetsPay.GameOver(LetsPay.player1, LetsPay.player2, rounds);
+                string result =LetsPay.PlayAgain().ToLower();
+                 PlayAgain(result);
                 Console.Read();
+        }
+        static void PlayAgain(string result)
+        {
+            switch (result)
+            {
+                case "yes":
+                    Console.Clear();
+                    Main();
+                    break;
+                case "no":
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
