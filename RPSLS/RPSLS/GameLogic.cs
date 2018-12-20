@@ -35,13 +35,11 @@ namespace RPSLS
                 player2 = new AI(Hand);
             }
         }
-
         public void PlayGame()
         {
-           
             while (player1.score < rounds && player2.score < rounds)
             {
-                GameScore(player1, player2);
+                DisplayGameScore(player1, player2);
                 Console.WriteLine("\n" + player1.name + " Turn.\n");
                 string input =player1.IsVaildChoice(player1.AskForInput());
                 Console.WriteLine("\n" + player2.name + " Turn.\n");
@@ -49,8 +47,8 @@ namespace RPSLS
                 Console.Clear();
                 CheckAgainstList(input, aiInput);
             }
-            GameScore(player1, player2);
-            GameOver(player1, player2, rounds);
+            DisplayGameScore(player1, player2);
+            DisplayGameOver(player1, player2, rounds);
             string result = PlayAgain().ToLower();
             PlayAgain(result);
         }
@@ -67,34 +65,33 @@ namespace RPSLS
                     break;
             }
         }
-
         public void CheckAgainstList(string p1, string p2)
         {
             switch (p1)
             {
                 case "Rock":
                     //other player choose,what guesture wins against Rock,what guesture wins against Rock,what loses against Rock,what loses against Rock
-                    ShortCheck(p2, Hand[2], Hand[3], Hand[1], Hand[4]);
+                    RoundWinOrLose(p2, Hand[2], Hand[3], Hand[1], Hand[4]);
                     break;
                 case "Paper":
                     //other player choose,what guesture wins against Paper,what guesture wins against Paper,what loses against Paper,what loses against Paper
-                    ShortCheck(p2, Hand[0], Hand[4], Hand[2], Hand[3]);
+                    RoundWinOrLose(p2, Hand[0], Hand[4], Hand[2], Hand[3]);
                     break;
                 case "Scissors":
                     //other player choose,what guesture wins against Scissors,what guesture wins against Scissors,what loses against Scissors,what loses against Scissors
-                    ShortCheck(p2, Hand[1], Hand[3], Hand[0], Hand[4]);
+                    RoundWinOrLose(p2, Hand[1], Hand[3], Hand[0], Hand[4]);
                     break;
                 case "Lizard":
                     //other player choose,what guesture wins against Lizard,what guesture wins against Lizard,what loses against Lizard,what loses against Lizard
-                    ShortCheck(p2, Hand[4], Hand[1], Hand[2], Hand[0]);
+                    RoundWinOrLose(p2, Hand[4], Hand[1], Hand[2], Hand[0]);
                     break;
                 case "Spock":
                     //other player choose,what guesture wins against Spock,what guesture wins against Spock,what loses against Spock,what loses against Spock
-                    ShortCheck(p2, Hand[2], Hand[0], Hand[3], Hand[1]);
+                    RoundWinOrLose(p2, Hand[2], Hand[0], Hand[3], Hand[1]);
                     break;
             }
         }
-        public void ShortCheck(string p2, string Win, string win, string Lose, string lose)
+        public void RoundWinOrLose(string p2, string Win, string win, string Lose, string lose)
         {
             if (p2 == Win || p2 == win)
             {
@@ -111,12 +108,12 @@ namespace RPSLS
                 Console.WriteLine($"{player1.name} Ties: { player2.name}");
             }
         }
-        public void GameScore(User user, User test)
+        public void DisplayGameScore(User user, User test)
         {
             Console.WriteLine($"{player1.name} score: { player1.score}");
             Console.WriteLine($"{player2.name} score: { player2.score}");
         }
-        public void GameOver(User user, User test, int rounds)
+        public void DisplayGameOver(User user, User test, int rounds)
         {
             if (user.score == rounds && test.score == rounds)
             {
@@ -137,7 +134,6 @@ namespace RPSLS
             string result = Console.ReadLine();
             return result;
         }
-
         private string AskForGameType(string input)
         {
             List<string> options = new List<string>() { "multiplayer", "singleplayer", "ai" };
