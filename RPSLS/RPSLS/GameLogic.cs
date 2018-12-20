@@ -8,9 +8,13 @@ namespace RPSLS
 {
     public class GameLogic
     {
+        //private by defualt
+        //Variables
         public List<string> Hand;
-        public Player player1;
-        public Player player2;
+        public User player1;
+        public User player2;
+
+        
         public GameLogic(string gameMode)
         {
             Hand = new List<string>() { "Rock", "Paper", "Scissors","Lizard","Spock" };
@@ -56,25 +60,25 @@ namespace RPSLS
         {
             if (p2 == Win || p2 == win)
             {
-                Console.WriteLine(player1.name + " Beats " + player2.name);
+                Console.WriteLine($"{player1.name} Beats: { player2.name}");
                 player1.score++;
             }
             else if (p2 == Lose || p2 == lose)
             {
-                Console.WriteLine(player2.name + " Beats " + player1.name);
+                Console.WriteLine($"{player2.name} Beats: { player1.name}");
                 player2.score++;
             }
             else
             {
-                Console.WriteLine(player1.name + " Ties " + player2.name);
+                Console.WriteLine($"{player1.name} Ties: { player2.name}");
             }
         }
-        public void GameScore(Player user,Player test)
+        public void GameScore(User user,User test)
         {
-            Console.WriteLine(player1.name + " score: " + player1.score);
-            Console.WriteLine(player2.name + " score: " + player2.score);
+            Console.WriteLine($"{player1.name} score: { player1.score}");
+            Console.WriteLine($"{player2.name} score: { player2.score}");
         }
-        public void GameOver(Player user,Player test, int rounds)
+        public void GameOver(User user,User test, int rounds)
         {
             if(user.score == rounds && test.score == rounds)
             {
