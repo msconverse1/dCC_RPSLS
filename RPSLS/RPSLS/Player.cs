@@ -8,10 +8,11 @@ namespace RPSLS
 {
    public class Player : User
     {
-        public Player(string name, int score)
+        public Player(string name, int score,List<string> Guestures)
         {
             this.name = name;
             this.score = score;
+            this.guesture = Guestures;
         }
     }
 }

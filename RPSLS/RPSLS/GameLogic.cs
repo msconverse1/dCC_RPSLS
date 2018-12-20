@@ -21,22 +21,53 @@ namespace RPSLS
                      rounds = AskForRounds();
             if (input == "multiplayer")
             {
-                player1 = new Player("Darkham", 0);
-                player2 = new Player("Logan", 0);
+                player1 = new Player("Darkham", 0,Hand);
+                player2 = new Player("Logan", 0,Hand);
             }
             else if(input == "ai")
             {
-                player1 = new AI();
-                player2 = new AI();
+                player1 = new AI(Hand);
+                player2 = new AI(Hand);
             }
             else
             {
-                player1 = new Player("Darkham", 0);
-                player2 = new AI();
+                player1 = new Player("Darkham", 0, Hand);
+                player2 = new AI(Hand);
             }
-            player1.Guestures(Hand);
-            player2.Guestures(Hand);
         }
+
+        public void PlayGame()
+        {
+           
+            while (player1.score < rounds && player2.score < rounds)
+            {
+                GameScore(player1, player2);
+                Console.WriteLine("\n" + player1.name + " Turn.\n");
+                string input =player1.IsVaildChoice(player1.AskForInput());
+                Console.WriteLine("\n" + player2.name + " Turn.\n");
+                string aiInput = player2.IsVaildChoice(player2.AskForInput());
+                Console.Clear();
+                CheckAgainstList(input, aiInput);
+            }
+            GameScore(player1, player2);
+            GameOver(player1, player2, rounds);
+            string result = PlayAgain().ToLower();
+            PlayAgain(result);
+        }
+        private void PlayAgain(string result)
+        {
+            switch (result)
+            {
+                case "yes":
+                    Console.Clear();
+                    GameLogic LetsPay = new GameLogic();
+                    LetsPay.PlayGame();
+                    break;
+                default:
+                    break;
+            }
+        }
+
         public void CheckAgainstList(string p1, string p2)
         {
             switch (p1)

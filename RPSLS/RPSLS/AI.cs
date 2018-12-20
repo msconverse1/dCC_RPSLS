@@ -8,10 +8,11 @@ namespace RPSLS
 {
     public class AI : User
     {
-        public  AI() 
+        public  AI(List<string> Guestures) 
         {
             name = "Peter ";
             score = 0;
+            this.guesture = Guestures;
         }
       public  override string AskForInput()
         {

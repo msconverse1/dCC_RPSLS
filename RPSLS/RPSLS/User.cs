@@ -11,14 +11,7 @@ namespace RPSLS
         public string name;
         public int score;
         public List<string> guesture;
-        public User()
-        {
 
-        }
-        public void Guestures(List<string> hand)
-        {
-            this.guesture = hand;
-        }
         public virtual string AskForInput()
         {
             string input;
