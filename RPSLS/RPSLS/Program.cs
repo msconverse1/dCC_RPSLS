@@ -10,12 +10,8 @@ namespace RPSLS
     {
         static void Main()
         {
-            Console.WriteLine("What game mode would you like to play?(singleplayer or multiplayer)");
-            string gameType = Console.ReadLine();
-                Console.WriteLine("How many rounds would you like to play to?");
-               
-                 int.TryParse(Console.ReadLine(), out int rounds);
-                GameLogic LetsPay = new GameLogic(gameType);
+                GameLogic LetsPay = new GameLogic();
+                 int rounds = LetsPay.rounds;
                 while (LetsPay.player1.score < rounds && LetsPay.player2.score < rounds)
                 {
                     LetsPay.GameScore(LetsPay.player1, LetsPay.player2);
@@ -32,7 +28,6 @@ namespace RPSLS
                 LetsPay.GameOver(LetsPay.player1, LetsPay.player2, rounds);
                 string result =LetsPay.PlayAgain().ToLower();
                  PlayAgain(result);
-                Console.Read();
         }
         static void PlayAgain(string result)
         {

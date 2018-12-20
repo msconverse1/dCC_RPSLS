@@ -13,18 +13,25 @@ namespace RPSLS
         public List<string> Hand;
         public User player1;
         public User player2;
-
-
-        public GameLogic(string gameMode)
+        public int rounds = 0;
+        public GameLogic()
         {
             Hand = new List<string>() { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
-            player1 = new Player("Darkham", 0);
-            if (gameMode == "multiplayer")
+            string input = AskForGameType("");
+             rounds = AskForRounds();
+            if (input == "multiplayer")
             {
+                player1 = new Player("Darkham", 0);
                 player2 = new Player("Logan", 0);
+            }
+            else if(input == "ai")
+            {
+                player1 = new AI();
+                player2 = new AI();
             }
             else
             {
+                player1 = new Player("Darkham", 0);
                 player2 = new AI();
             }
             player1.Guestures(Hand);
@@ -98,6 +105,31 @@ namespace RPSLS
             Console.WriteLine("Would you like to play agian?");
             string result = Console.ReadLine();
             return result;
+        }
+
+        private string AskForGameType(string input)
+        {
+            List<string> options = new List<string>() { "multiplayer", "singleplayer", "ai" };
+            Console.WriteLine("What game mode would you like to play?(singleplayer , multiplayer , ai)");
+            string output = Console.ReadLine().Trim().ToLower();
+            while (!options.Contains(output))
+            {
+                Console.Clear();
+                Console.WriteLine("Not a Vaild Input.");
+                output = AskForGameType(output);
+            }
+            return output;
+        }
+        static int AskForRounds()
+        {
+            int rounds;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("How many rounds would you like to play to min is 3?");
+                int.TryParse(Console.ReadLine(), out rounds);
+            } while (rounds < 3);
+            return rounds;
         }
     }
 }
